@@ -1,0 +1,45 @@
+name: opthalmology
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+environment:
+  sdk: '>=2.18.6 <3.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  hive_flutter:
+  uuid:
+  file_picker:
+  material_design_icons_flutter: 
+  font_awesome_flutter:
+  google_fonts: 
+  colornames: 
+  equatable:
+  shared_preferences: 
+  intl:
+  path_provider:
+  collection:
+  flutter_hooks: 
+  hooks_riverpod: 
+  riverpod_annotation: 
+  go_router:
+  freezed_annotation:
+  json_annotation:
+  firebase_core: ^2.4.1
+  firebase_auth: ^4.2.2
+  cloud_firestore: ^4.3.1
+  states_rebuilder:
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+  build_runner:
+  riverpod_generator:
+  freezed:
+  json_serializable:
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/assets/
+    - lib/assets/fonts/

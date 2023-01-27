@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "646236561310",
+    "project_id": "opthalmology-mcqs",
+    "storage_bucket": "opthalmology-mcqs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646236561310:android:b64cb9bb03ed757336808f",
+        "android_client_info": {
+          "package_name": "dev.loner.opthalmology"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646236561310-kfo7bu2pog6q3q2fpfrvra4h16kc9hck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMbQSbC7T2-RmXaqsSE3nMI6ky-hDxD4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646236561310-kfo7bu2pog6q3q2fpfrvra4h16kc9hck.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "646236561310-oqns7cvgm763pd5s7tk538bjgru2qvuf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.loner.opthalmology"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
