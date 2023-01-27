@@ -42,7 +42,7 @@ class Settings {
     persist: () => PersistState(key: 'border'),
   );
 
-  set themeMode(val) => themeModeRM.state;
+  set themeMode(val) => themeModeRM.state = val;
   set color(val) => colorRM.state = val;
   set font(val) => fontRM.state = val;
   set padding(val) => paddingRM.state = val;

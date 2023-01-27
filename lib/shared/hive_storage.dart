@@ -7,7 +7,7 @@ class HiveStorage implements IPersistStore {
   @override
   Future<void> init() async {
     await Hive.initFlutter();
-    box = await Hive.openBox('myBox');
+    box = await Hive.openBox('questions');
   }
 
   @override

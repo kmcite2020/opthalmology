@@ -9,7 +9,7 @@ class GotoRegisterViewButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => navigator.toPageless(LoginView()),
+      onPressed: () => navigator.toPageless(const LoginView()),
       tooltip: 'register',
       icon: const Icon(Icons.contact_page),
     );

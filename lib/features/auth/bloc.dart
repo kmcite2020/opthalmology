@@ -1,14 +1,20 @@
-import 'package:opthalmology/features/settings/models/models.dart';
+import 'package:opthalmology/features/auth/interface.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
+import 'user.dart';
+
 class AuthBloc {
-  final currentUserRM = RM.inject<UserModel?>(() => null);
-  void login(String name, String email, String password) => currentUserRM.state = UserModel(name: name, email: email, password: password);
-  void logout() => currentUserRM.state = null;
+  AuthInterface get interface => AuthRepository();
+  void login(String email, String password) {
+    interface.login(email: email, password: password);
+  }
 
-  UserModel? get currentUser => currentUserRM.state;
+  void logout() => interface.logout();
+  void register(String name, String email, String password) => interface.register(name: name, email: email, password: password);
 
-  bool get isAuthenticated => currentUser != null;
+  UserModel? get currentUser => interface.currentUser;
+
+  bool get isAuthenticated => interface.isAuth;
 
   /// controllers for login and register
   final loginForm = RM.injectForm();

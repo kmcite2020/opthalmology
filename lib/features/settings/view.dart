@@ -1,6 +1,7 @@
 import 'package:colornames/colornames.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:opthalmology/features/questions/bloc.dart';
 import '../../shared/list_tile.dart';
 import 'package:states_rebuilder/scr/state_management/state_management.dart';
 
@@ -179,6 +180,17 @@ class SettingsPage extends ReactiveStatelessWidget {
                   .toList(),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.all(settings.padding),
+            child: ElevatedButton(
+              onPressed: questionBloc.isEmpty ? null : () => questionBloc.deleteAllQuestion(),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size.fromHeight(60),
+                backgroundColor: Theme.of(context).colorScheme.error,
+              ),
+              child: const Text('DELETE ALL QUESTIONS'),
+            ),
+          )
         ],
       ),
     );

@@ -1,3 +1,5 @@
+import 'package:opthalmology/features/questions/bloc.dart';
+
 enum Chapter {
   orbit("Orbit & Oculoplasty"),
   catarct("Cataracts"),
@@ -11,7 +13,5 @@ enum Chapter {
 
   const Chapter(this.name);
   final String name;
-  // int numberOfQuestions(WidgetRef ref) {
-  //   return ref.watch(GetNumberOfQuestionsOfChaptersProvider(Chapter.values[index]));
-  // }
+  String get numberOfQuestions => questionBloc.numberOfQuestionsByChapter(Chapter.values[index]).toString();
 }

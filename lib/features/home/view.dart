@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables
 
+import 'package:opthalmology/features/questions/bloc.dart';
+import 'package:opthalmology/features/questions/view.dart';
 import 'package:opthalmology/features/test/controller.dart';
 import 'package:opthalmology/shared/navigator/go_buttons/to_login.dart';
 import 'package:opthalmology/shared/navigator/go_buttons/to_register.dart';
@@ -11,8 +13,9 @@ import '../../shared/navigator/go_buttons/to_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../test/test_screen.dart';
-import 'chapters.dart';
+import '../settings/controller.dart';
+import '../test/view/test_screen.dart';
+import '../chapters/chapters.dart';
 
 class MyHomePage extends ReactiveStatelessWidget {
   const MyHomePage({super.key});
@@ -28,6 +31,7 @@ class MyHomePage extends ReactiveStatelessWidget {
           GotoSettingsPageButton(),
           GotoLoginViewButton(),
           GotoRegisterViewButton(),
+          AddQuestionWidget() // TODO remove when not used
         ],
       ),
       body: ListView(
@@ -35,14 +39,22 @@ class MyHomePage extends ReactiveStatelessWidget {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(settings.padding),
                 child: Text(
-                  "Hello, ${auth.currentUser?.name}",
+                  "Hello...!",
+                  textScaleFactor: 5,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Total Questions {ref.watch(getQuestionsProvider).length}", textScaleFactor: .95),
+                padding: EdgeInsets.all(settings.padding),
+                child: Text(
+                  "${auth.currentUser?.name}",
+                  textScaleFactor: 3,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(settings.padding),
+                child: Text("Total Questions ${questionBloc.numberOfQuestions} ", textScaleFactor: 2),
               ),
             ],
           ),
@@ -53,7 +65,7 @@ class MyHomePage extends ReactiveStatelessWidget {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 border: Border.all(),
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(settings.borderRadius),
               ),
               child: Column(
                 children: const [
@@ -63,7 +75,7 @@ class MyHomePage extends ReactiveStatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(settings.padding),
             child: ListTile(
               onTap: () {},
               title: const Text('Select a chapter to test yourself in'),
@@ -72,10 +84,18 @@ class MyHomePage extends ReactiveStatelessWidget {
           for (final eachChapter in Chapter.values)
             Container(
               height: 100,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), border: Border.all()),
+              margin: EdgeInsets.all(settings.padding),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(settings.borderRadius),
+                border: Border.all(),
+              ),
               // padding: EdgeInsets.all(padding),
               child: ListTilePadded(
-                // borderRadius: BorderRadius.circular(borderRadius),
+                leading: CircleAvatar(
+                  child: Text(
+                    eachChapter.numberOfQuestions,
+                  ),
+                ),
                 onTap: () {
                   test.currentChapter = eachChapter;
                   navigator.toPageless(TestScreen());
@@ -83,8 +103,13 @@ class MyHomePage extends ReactiveStatelessWidget {
                 subtitle: Column(
                   children: [
                     Text(eachChapter.name, textScaleFactor: 1.4),
-                    Text("$eachChapter", textScaleFactor: 1.5),
                   ],
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    navigator.toPageless(QuestionsView(chapter: eachChapter));
+                  },
+                  icon: Icon(Icons.show_chart),
                 ),
               ),
             ),

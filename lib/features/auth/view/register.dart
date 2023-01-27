@@ -13,7 +13,7 @@ class RegisterView extends ReactiveStatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hi..., Wellcome.", textScaleFactor: 1.3),
+        title: Text("Wellcome...!", textScaleFactor: 2),
       ),
       body: OnFormBuilder(
         listenTo: auth.registerForm,
@@ -23,7 +23,17 @@ class RegisterView extends ReactiveStatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                autovalidateMode: AutovalidateMode.always,
+                controller: auth.nameFormField.controller,
+                decoration: InputDecoration(
+                  hintText: 'enter your name...',
+                  labelText: 'id',
+                  errorText: auth.nameFormField.error,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
                 controller: auth.emailFormField.controller,
                 decoration: InputDecoration(
                   hintText: 'enter your email...',
@@ -35,7 +45,6 @@ class RegisterView extends ReactiveStatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                autovalidateMode: AutovalidateMode.always,
                 controller: auth.passwordFormField.controller,
                 decoration: InputDecoration(
                   hintText: 'enter your password...',
@@ -47,27 +56,15 @@ class RegisterView extends ReactiveStatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {
-                  if (loginFormKey.currentState!.validate()) {
-                    // ref.read(authenticationProvider.notifier).signIn(id: idController.text, password: passwordController.text);
-                  } else {
-                    print('Nothing happened');
-                  }
-                },
-                child: Text('Sign in'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (loginFormKey.currentState!.validate()) {
-                    // ref.read(authenticationProvider.notifier).createAccount(id: idController.text, password: passwordController.text);
-                  } else {
-                    print('Nothing happened');
-                  }
-                },
-                child: Text('Create account'),
+                onPressed: auth.registerForm.isValid
+                    ? () {
+                        if (auth.registerForm.isValid) {
+                        } else {
+                          print('Nothing happened');
+                        }
+                      }
+                    : null,
+                child: Text('Register'),
               ),
             ),
           ],

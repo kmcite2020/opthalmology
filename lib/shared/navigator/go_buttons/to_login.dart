@@ -9,7 +9,7 @@ class GotoLoginViewButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => navigator.toPageless(LoginView()),
+      onPressed: () => navigator.toPageless(const LoginView()),
       tooltip: 'login',
       icon: const Icon(Icons.login),
     );

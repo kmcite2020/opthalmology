@@ -34,12 +34,11 @@ class MyApp extends ReactiveStatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-      routeInformationParser: navigator.routeInformationParser,
-      routerDelegate: navigator.routerDelegate,
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: ThemeMode.dark
-      //  settings.themeMode,
+        routeInformationParser: navigator.routeInformationParser,
+        routerDelegate: navigator.routerDelegate,
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: settings.themeMode,
       );
 }

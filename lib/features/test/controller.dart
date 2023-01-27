@@ -1,7 +1,6 @@
-import 'package:opthalmology/features/home/controller.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../home/chapters.dart';
+import '../chapters/chapters.dart';
 
 class TestBloc {
   late final currentChapterRM = RM.inject<Chapter>(() => throw UnimplementedError());

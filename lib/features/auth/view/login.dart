@@ -4,9 +4,7 @@ import 'package:states_rebuilder/states_rebuilder.dart';
 import '../bloc.dart';
 
 class LoginView extends ReactiveStatelessWidget {
-  final loginFormKey = GlobalKey<FormState>();
-
-  LoginView({super.key});
+  const LoginView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,26 +43,14 @@ class LoginView extends ReactiveStatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {
-                  if (loginFormKey.currentState!.validate()) {
-                    // ref.read(authenticationProvider.notifier).signIn(id: idController.text, password: passwordController.text);
-                  } else {
-                    print('Nothing happened');
-                  }
-                },
-                child: const Text('Sign in'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (loginFormKey.currentState!.validate()) {
-                    // ref.read(authenticationProvider.notifier).createAccount(id: idController.text, password: passwordController.text);
-                  } else {
-                    print('Nothing happened');
-                  }
-                },
+                onPressed: auth.loginForm.isValid
+                    ? () {
+                        if (auth.loginForm.isValid) {
+                        } else {
+                          print('Nothing happened');
+                        }
+                      }
+                    : null,
                 child: const Text('Login'),
               ),
             ),
