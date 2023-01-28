@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:opthalmology/features/auth/view/register_view.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';

@@ -9,4 +9,5 @@ abstract class QuestionInterface {
   void addQuestion(Question question);
   void deleteAllQuestion();
   void deleteQuestion(Question question);
+  bool isSameQuestionStatementPresent(String questionStatement);
 }

@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'question.dart';
 
 // **************************************************************************
@@ -27,15 +29,12 @@ _$_Question _$$_QuestionFromJson(Map<String, dynamic> json) => _$_Question(
       id: json['id'] as String,
       questionName: json['questionName'] as String,
       chapter: $enumDecode(_$ChapterEnumMap, json['chapter']),
-      options: (json['options'] as List<dynamic>)
-          .map((e) => Option.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      options: (json['options'] as List<dynamic>).map((e) => Option.fromJson(e as Map<String, dynamic>)).toList(),
       correctType: $enumDecode(_$OptionTypeEnumMap, json['correctType']),
       explaination: json['explaination'] as String,
     );
 
-Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) => <String, dynamic>{
       'id': instance.id,
       'questionName': instance.questionName,
       'chapter': _$ChapterEnumMap[instance.chapter]!,

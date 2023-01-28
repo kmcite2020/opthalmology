@@ -2,7 +2,6 @@
 
 import 'package:opthalmology/shared/utils.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
-import 'package:uuid/uuid.dart';
 
 import '../chapters/chapters_enum.dart';
 import 'interface.dart';
@@ -31,32 +30,7 @@ class QuestionRepository implements QuestionInterface {
   }
 
   @override
-  void addQuestion(Question question2) {
-    final Question question = Question(
-      id: Uuid().v1(),
-      questionName: 'questionName',
-      chapter: Chapter.catarct,
-      options: [
-        Option(
-          description: 'description',
-          optionType: OptionType.a,
-        ),
-        Option(
-          description: 'description',
-          optionType: OptionType.b,
-        ),
-        Option(
-          description: 'description',
-          optionType: OptionType.c,
-        ),
-        Option(
-          description: 'description',
-          optionType: OptionType.d,
-        ),
-      ],
-      correctType: OptionType.a,
-      explaination: 'explaination',
-    );
+  void addQuestion(Question question) {
     questionsRM.state = [...questionsRM.state, question];
   }
 
@@ -72,5 +46,17 @@ class QuestionRepository implements QuestionInterface {
       for (final eachQuestion in questionsRM.state)
         if (eachQuestion != question) eachQuestion
     ];
+  }
+
+  @override
+  bool isSameQuestionStatementPresent(String questionStatement) {
+    for (final Question question in questionsRM.state) {
+      if (question.questionName == questionStatement) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return false;
   }
 }

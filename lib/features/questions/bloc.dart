@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
+import 'package:uuid/uuid.dart';
 
 import 'interface.dart';
 import 'models/question.dart';
@@ -18,24 +19,101 @@ class QuestionBloc {
   void addQuestion(Question question) => interface.addQuestion(question);
   void deleteAllQuestion() => interface.deleteAllQuestion();
   void deleteQuestion(Question question) => interface.deleteQuestion(question);
-}
 
-final QuestionBloc questionBloc = QuestionBloc();
-
-class QuestionManagerBloc {
   late final addQuestionForm = RM.injectForm(
     autovalidateMode: AutovalidateMode.always,
-    submit: () async {},
+    submit: () async {
+      interface.addQuestion(
+        Question(
+          // ignore: prefer_const_constructors
+          id: Uuid().v1(),
+          questionName: question.value,
+          chapter: chapter.value,
+          options: [
+            Option(description: a.text, optionType: OptionType.a),
+            Option(description: b.text, optionType: OptionType.b),
+            Option(description: c.text, optionType: OptionType.c),
+            Option(description: d.text, optionType: OptionType.d),
+          ],
+          correctType: correct.value,
+          explaination: explaination.value,
+        ),
+      );
+    },
   );
 
-  late final question = RM.injectTextEditing();
-  late final a = RM.injectTextEditing();
-  late final b = RM.injectTextEditing();
-  late final c = RM.injectTextEditing();
-  late final d = RM.injectTextEditing();
-  late final explaination = RM.injectTextEditing();
+  late final question = RM.injectTextEditing(
+    validators: [
+      (v) {
+        if (!v!.contains("?")) {
+          return 'should contain ? mark';
+        }
+        if (interface.isSameQuestionStatementPresent(v)) {
+          return 'should not be same as saved question';
+        }
+        if (v.length < 10) {
+          return 'should contain at least 10 characters';
+        }
+
+        return null;
+      }
+    ],
+  );
+  late final a = RM.injectTextEditing(
+    validators: [
+      (v) {
+        if (v!.isEmpty) {
+          return 'should not be empty';
+        }
+        return null;
+      }
+    ],
+  );
+  late final b = RM.injectTextEditing(
+    validators: [
+      (v) {
+        if (v!.isEmpty) {
+          return 'should not be empty';
+        }
+        return null;
+      }
+    ],
+  );
+  late final c = RM.injectTextEditing(
+    validators: [
+      (v) {
+        if (v!.isEmpty) {
+          return 'should not be empty';
+        }
+        return null;
+      }
+    ],
+  );
+  late final d = RM.injectTextEditing(
+    validators: [
+      (v) {
+        if (v!.isEmpty) {
+          return 'should not be empty';
+        }
+        return null;
+      }
+    ],
+  );
+  late final explaination = RM.injectTextEditing(
+    validators: [
+      (v) {
+        if (v!.isEmpty) {
+          return 'should not be empty';
+        }
+        if (!v.endsWith('.')) {
+          return 'should not be empty';
+        }
+        return null;
+      }
+    ],
+  );
   late final correct = RM.injectFormField<OptionType>(OptionType.a);
   late final chapter = RM.injectFormField<Chapter>(Chapter.catarct);
 }
 
-final QuestionManagerBloc qmb = QuestionManagerBloc();
+final QuestionBloc questionBloc = QuestionBloc();

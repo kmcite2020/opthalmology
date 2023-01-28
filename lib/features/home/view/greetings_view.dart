@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:opthalmology/shared/utils.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
