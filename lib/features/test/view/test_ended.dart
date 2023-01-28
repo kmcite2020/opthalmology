@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
 
-class TestEnded extends StatelessWidget {
+class TestEnded extends ReactiveStatelessWidget {
   const TestEnded({super.key});
 
   @override

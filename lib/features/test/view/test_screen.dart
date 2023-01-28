@@ -2,25 +2,25 @@
 
 import 'package:flutter/material.dart';
 import 'package:opthalmology/features/questions/bloc.dart';
-import 'package:opthalmology/features/settings/controller.dart';
-import 'package:opthalmology/features/test/controller.dart';
-import 'package:opthalmology/shared/navigator/navigator.dart';
+import 'package:opthalmology/features/settings/bloc.dart';
+import 'package:opthalmology/features/test/bloc.dart';
 import 'package:states_rebuilder/scr/state_management/rm.dart';
 
-import '../../chapters/chapters.dart';
+import '../../../shared/utils.dart';
+import '../../chapters/chapters_enum.dart';
 import 'test_started.dart';
 
 @immutable
 class TestScreen extends ReactiveStatelessWidget {
   TestScreen({super.key});
-  final Chapter chapter = test.currentChapter;
+  final Chapter chapter = testBloc.chapter;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          chapter.name,
+          '${chapter.name}Test Screen',
         ),
       ),
       body: ListView(
@@ -32,28 +32,30 @@ class TestScreen extends ReactiveStatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(settings.padding),
+            padding: EdgeInsets.all(settingsBloc.padding),
             child: SwitchListTile(
               title: Text("Tutor Mode"),
-              value: test.tutorMode,
-              onChanged: test.onTutorModeChanged,
+              value: testBloc.tutorMode,
+              onChanged: testBloc.onTutorModeChanged,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(settings.padding),
-            child: SwitchListTile(
-              title: Text("Timed Mode"),
-              value: test.timedMode,
-              onChanged: test.onTimedModeChanged,
+          if (!testBloc.tutorMode)
+            Padding(
+              padding: EdgeInsets.all(settingsBloc.padding),
+              child: SwitchListTile(
+                title: Text("Timed Mode"),
+                value: testBloc.timedMode,
+                onChanged: testBloc.onTimedModeChanged,
+              ),
             ),
-          ),
           Padding(
-            padding: EdgeInsets.all(settings.padding),
+            padding: EdgeInsets.all(settingsBloc.padding),
             child: questionBloc.getQuestionByChapter(chapter).isEmpty
                 ? Text('No questions available to start the test', textScaleFactor: 2)
                 : ElevatedButton(
                     onPressed: () {
-                      navigator.toPageless(TestStarted(chapter: chapter));
+                      RM.navigate.to(TestStarted(chapter: chapter));
+                      // testBloc.startTimer();
                     },
                     child: Text(
                       'START TEST',

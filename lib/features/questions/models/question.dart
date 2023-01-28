@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
-import '../../chapters/chapters.dart';
+import '../../chapters/chapters_enum.dart';
 
 part 'question.freezed.dart';
 part 'question.g.dart';
@@ -43,7 +46,7 @@ class Question with _$Question {
 }
 
 final Question questionDummy = Question(
-  id: 'test',
+  id: Uuid().v1(),
   questionName: 'questionName',
   chapter: Chapter.catarct,
   options: [

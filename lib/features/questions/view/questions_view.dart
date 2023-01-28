@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:opthalmology/features/chapters/chapters.dart';
-import 'package:opthalmology/features/questions/bloc.dart';
-import 'package:opthalmology/features/questions/models/question.dart';
+import '../../chapters/chapters_enum.dart';
+import '../bloc.dart';
+import '../models/question.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-class AddQuestionWidget extends StatelessWidget {
+class AddQuestionWidget extends ReactiveStatelessWidget {
   const AddQuestionWidget({super.key});
 
   @override
@@ -35,18 +35,19 @@ class QuestionsView extends ReactiveStatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           String questionNumber = (index + 1).toString();
           Question question = questionBloc.getQuestionByChapter(chapter)[index];
-          return ListTile(
-            title: Text("Q.$questionNumber ${question.questionName}"),
-            subtitle: Column(
-              children: [
-                for (final Option option in question.options)
-                  Text(
-                    " ${option.optionType.name}. ${option.description}",
-                  ),
-                Text(question.id),
-                Text(question.chapter.toString()),
-                Text(question.explaination),
-              ],
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              onLongPress: () => questionBloc.deleteQuestion(question),
+              title: Text("Q.$questionNumber ${question.questionName}"),
+              subtitle: Column(
+                children: [
+                  for (final Option option in question.options) Text(" ${option.optionType.name}. ${option.description}"),
+                  Text(question.id),
+                  Text(question.chapter.toString()),
+                  Text(question.explaination),
+                ],
+              ),
             ),
           );
         },

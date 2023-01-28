@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../features/settings/controller.dart';
+import '../features/settings/bloc.dart';
 
-class ListTilePadded extends StatelessWidget {
+class ListTilePadded extends ReactiveStatelessWidget {
   const ListTilePadded({super.key, this.leading, this.title, this.subtitle, this.trailing, this.onTap});
   final Widget? leading;
   final Widget? title;
@@ -12,7 +13,7 @@ class ListTilePadded extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(settings.padding),
+      padding: EdgeInsets.all(settingsBloc.padding),
       child: ListTile(
         leading: leading,
         title: title,

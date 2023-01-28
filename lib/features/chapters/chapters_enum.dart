@@ -1,4 +1,4 @@
-import 'package:opthalmology/features/questions/bloc.dart';
+import '../questions/bloc.dart';
 
 enum Chapter {
   orbit("Orbit & Oculoplasty"),

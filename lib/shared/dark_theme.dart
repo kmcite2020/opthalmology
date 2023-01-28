@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../features/settings/controller.dart';
+import '../features/settings/bloc.dart';
 
 ThemeData get darkTheme => ThemeData(
-      cardColor: settings.color,
-      disabledColor: settings.color,
-      dividerColor: settings.color,
-      highlightColor: settings.color,
-      scaffoldBackgroundColor: settings.color.shade800,
-      canvasColor: settings.color.shade900,
-      focusColor: settings.color.shade400,
-      hintColor: settings.color,
-      hoverColor: settings.color,
-      indicatorColor: settings.color,
-      primaryColorDark: settings.color.shade800,
-      primaryColorLight: settings.color.shade200,
-      colorSchemeSeed: settings.color,
-      secondaryHeaderColor: settings.color,
-      shadowColor: settings.color,
-      splashColor: settings.color,
-      unselectedWidgetColor: settings.color.withAlpha(100),
-      dialogTheme: DialogTheme(backgroundColor: settings.color.shade700),
+      cardColor: settingsBloc.color,
+      disabledColor: settingsBloc.color,
+      dividerColor: settingsBloc.color,
+      highlightColor: settingsBloc.color,
+      scaffoldBackgroundColor: settingsBloc.color.shade800,
+      canvasColor: settingsBloc.color.shade900,
+      focusColor: settingsBloc.color.shade400,
+      hintColor: settingsBloc.color,
+      hoverColor: settingsBloc.color,
+      indicatorColor: settingsBloc.color,
+      primaryColorDark: settingsBloc.color.shade800,
+      primaryColorLight: settingsBloc.color.shade200,
+      colorSchemeSeed: settingsBloc.color,
+      secondaryHeaderColor: settingsBloc.color,
+      shadowColor: settingsBloc.color,
+      splashColor: settingsBloc.color,
+      unselectedWidgetColor: settingsBloc.color.withAlpha(100),
+      dialogTheme: DialogTheme(backgroundColor: settingsBloc.color.shade700),
       popupMenuTheme: PopupMenuThemeData(
-        color: settings.color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settings.borderRadius)),
+        color: settingsBloc.color,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settingsBloc.border)),
       ),
-      appBarTheme: AppBarTheme(backgroundColor: settings.color.shade900, elevation: 10, toolbarHeight: settings.appBarHeight),
+      appBarTheme: AppBarTheme(backgroundColor: settingsBloc.color.shade900, elevation: 10, toolbarHeight: settingsBloc.appBarHeight),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 10,
           minimumSize: const Size(100, 40),
-          backgroundColor: settings.color.shade300,
-          foregroundColor: settings.color.shade900,
+          backgroundColor: settingsBloc.color.shade300,
+          foregroundColor: settingsBloc.color.shade900,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(settings.borderRadius),
+            borderRadius: BorderRadius.circular(settingsBloc.border),
           ),
         ),
       ),
@@ -41,48 +42,48 @@ ThemeData get darkTheme => ThemeData(
         style: TextButton.styleFrom(
             elevation: 10,
             minimumSize: const Size(100, 40),
-            backgroundColor: settings.color.shade600,
-            foregroundColor: settings.color.shade900,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settings.borderRadius))),
+            backgroundColor: settingsBloc.color.shade600,
+            foregroundColor: settingsBloc.color.shade900,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settingsBloc.border))),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
             elevation: 10,
             minimumSize: const Size(100, 40),
-            backgroundColor: settings.color.shade800,
-            foregroundColor: settings.color.shade200,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settings.borderRadius))),
+            backgroundColor: settingsBloc.color.shade800,
+            foregroundColor: settingsBloc.color.shade200,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settingsBloc.border))),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: settings.color.shade800,
-        hoverColor: settings.color.shade900,
-        focusColor: settings.color.shade600,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(settings.borderRadius)),
+        fillColor: settingsBloc.color.shade800,
+        hoverColor: settingsBloc.color.shade900,
+        focusColor: settingsBloc.color.shade600,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(settingsBloc.border)),
       ),
       cardTheme: CardTheme(
-        color: settings.color.shade900,
+        color: settingsBloc.color.shade900,
         elevation: 10,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(settings.borderRadius),
+          borderRadius: BorderRadius.circular(settingsBloc.border),
         ),
-        margin: EdgeInsets.all(settings.padding),
+        margin: EdgeInsets.all(settingsBloc.padding),
       ),
       listTileTheme: ListTileThemeData(
-        tileColor: settings.color.shade900,
-        selectedTileColor: settings.color.shade600,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settings.borderRadius)),
+        tileColor: settingsBloc.color.shade900,
+        selectedTileColor: settingsBloc.color.shade600,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settingsBloc.border)),
       ),
       brightness: Brightness.dark,
       useMaterial3: true,
-      fontFamily: settings.font,
+      fontFamily: GoogleFonts.getFont(settingsBloc.font!).fontFamily,
       switchTheme: SwitchThemeData(
         thumbColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
           if (states.contains(MaterialState.disabled)) {
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
@@ -91,7 +92,7 @@ ThemeData get darkTheme => ThemeData(
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
@@ -102,7 +103,7 @@ ThemeData get darkTheme => ThemeData(
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
@@ -113,11 +114,11 @@ ThemeData get darkTheme => ThemeData(
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
       ),
-      bottomAppBarTheme: BottomAppBarTheme(color: settings.color),
+      bottomAppBarTheme: BottomAppBarTheme(color: settingsBloc.color),
       // colorScheme: ColorScheme(background: settingsModel.materialColor).copyWith(error: settingsModel.materialColor),
     );

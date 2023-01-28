@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:opthalmology/features/settings/bloc.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
 import 'package:uuid/uuid.dart';
 
 List<MaterialColor> get colors => Colors.primaries;
@@ -20,6 +22,8 @@ List<String> get fonts {
 }
 
 String get randomID => const Uuid().v4();
+
+void snackBar(String text) => RM.scaffold.showSnackBar(SnackBar(content: Text(text), duration: 2.seconds));
 
 Widget buildLoader() => const Scaffold(
       body: Center(
@@ -57,3 +61,7 @@ Widget buildError(Object e, WidgetRef ref) => Scaffold(
         ),
       ),
     );
+
+extension PaddingX on Widget {
+  Widget get pad => Padding(padding: EdgeInsets.all(settingsBloc.padding), child: this);
+}

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../features/settings/controller.dart';
+import '../features/settings/bloc.dart';
 
 ThemeData get lightTheme => ThemeData(
       listTileTheme: ListTileThemeData(
-        tileColor: settings.color.shade200,
-        selectedTileColor: settings.color.shade400.withAlpha(200),
+        tileColor: settingsBloc.color.shade200,
+        selectedTileColor: settingsBloc.color.shade400.withAlpha(200),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(settings.borderRadius),
+          borderRadius: BorderRadius.circular(settingsBloc.border),
         ),
       ),
       cardTheme: CardTheme(
-        color: settings.color.shade200,
+        color: settingsBloc.color.shade200,
         elevation: 10,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(settings.borderRadius),
+          borderRadius: BorderRadius.circular(settingsBloc.border),
         ),
         // margin: EdgeInsets.all(padding),
       ),
@@ -27,54 +28,54 @@ ThemeData get lightTheme => ThemeData(
       // dividerColor: Colors.blue,
       // errorColor: Colors.blue,
       // highlightColor: Colors.blue,
-      scaffoldBackgroundColor: settings.color.shade100,
+      scaffoldBackgroundColor: settingsBloc.color.shade100,
       timePickerTheme: TimePickerThemeData(
-        backgroundColor: settings.color.shade200,
+        backgroundColor: settingsBloc.color.shade200,
         dayPeriodShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(settings.borderRadius),
+          borderRadius: BorderRadius.circular(settingsBloc.border),
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(settings.borderRadius),
+          borderRadius: BorderRadius.circular(settingsBloc.border),
         ),
         hourMinuteShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(settings.borderRadius),
+          borderRadius: BorderRadius.circular(settingsBloc.border),
         ),
       ),
-      canvasColor: settings.color.shade200,
-      focusColor: settings.color.shade400,
-      hintColor: settings.color,
-      hoverColor: settings.color.shade400,
-      indicatorColor: settings.color,
+      canvasColor: settingsBloc.color.shade200,
+      focusColor: settingsBloc.color.shade400,
+      hintColor: settingsBloc.color,
+      hoverColor: settingsBloc.color.shade400,
+      indicatorColor: settingsBloc.color,
       // primaryColor: color,
-      primaryColorDark: settings.color.shade800,
-      primaryColorLight: settings.color.shade200,
+      primaryColorDark: settingsBloc.color.shade800,
+      primaryColorLight: settingsBloc.color.shade200,
       // primarySwatch: Colors.blue,
-      secondaryHeaderColor: settings.color,
-      shadowColor: settings.color,
-      splashColor: settings.color,
-      unselectedWidgetColor: settings.color.withAlpha(100),
+      secondaryHeaderColor: settingsBloc.color,
+      shadowColor: settingsBloc.color,
+      splashColor: settingsBloc.color,
+      unselectedWidgetColor: settingsBloc.color.withAlpha(100),
       dialogTheme: DialogTheme(
         elevation: 10,
-        backgroundColor: settings.color.shade200,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settings.borderRadius)),
+        backgroundColor: settingsBloc.color.shade200,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(settingsBloc.border)),
       ),
       popupMenuTheme: PopupMenuThemeData(
-        color: settings.color,
+        color: settingsBloc.color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            settings.borderRadius,
+            settingsBloc.border,
           ),
         ),
       ),
-      appBarTheme: AppBarTheme(backgroundColor: settings.color.shade100, elevation: 10, toolbarHeight: settings.appBarHeight),
+      appBarTheme: AppBarTheme(backgroundColor: settingsBloc.color.shade100, elevation: 10, toolbarHeight: settingsBloc.appBarHeight),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: settings.color.shade900,
-          foregroundColor: settings.color.shade100,
+          backgroundColor: settingsBloc.color.shade900,
+          foregroundColor: settingsBloc.color.shade100,
           minimumSize: const Size(100, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              settings.borderRadius,
+              settingsBloc.border,
             ),
           ),
         ),
@@ -82,23 +83,23 @@ ThemeData get lightTheme => ThemeData(
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           minimumSize: const Size(100, 40),
-          backgroundColor: settings.color.shade700,
-          foregroundColor: settings.color.shade900,
+          backgroundColor: settingsBloc.color.shade700,
+          foregroundColor: settingsBloc.color.shade900,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              settings.borderRadius,
+              settingsBloc.border,
             ),
           ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          backgroundColor: settings.color.shade800,
+          backgroundColor: settingsBloc.color.shade800,
           minimumSize: const Size(100, 40),
-          foregroundColor: settings.color.shade200,
+          foregroundColor: settingsBloc.color.shade200,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              settings.borderRadius,
+              settingsBloc.border,
             ),
           ),
         ),
@@ -106,25 +107,25 @@ ThemeData get lightTheme => ThemeData(
       inputDecorationTheme: InputDecorationTheme(
         // contentPadding: EdgeInsets.all(18),
         filled: true,
-        fillColor: settings.color.shade200,
-        hoverColor: settings.color.shade600,
-        focusColor: settings.color.shade900,
+        fillColor: settingsBloc.color.shade200,
+        hoverColor: settingsBloc.color.shade600,
+        focusColor: settingsBloc.color.shade900,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(settings.borderRadius),
+          borderRadius: BorderRadius.circular(settingsBloc.border),
         ),
       ),
-      colorSchemeSeed: settings.color,
+      colorSchemeSeed: settingsBloc.color,
 
       brightness: Brightness.light,
       useMaterial3: true,
-      fontFamily: settings.font,
+      fontFamily: GoogleFonts.getFont(settingsBloc.font!).fontFamily,
       switchTheme: SwitchThemeData(
         thumbColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
           if (states.contains(MaterialState.disabled)) {
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
@@ -133,7 +134,7 @@ ThemeData get lightTheme => ThemeData(
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
@@ -144,7 +145,7 @@ ThemeData get lightTheme => ThemeData(
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
@@ -155,7 +156,7 @@ ThemeData get lightTheme => ThemeData(
             return null;
           }
           if (states.contains(MaterialState.selected)) {
-            return settings.color;
+            return settingsBloc.color;
           }
           return null;
         }),
