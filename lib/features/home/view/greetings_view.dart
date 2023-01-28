@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:opthalmology/shared/utils.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../../auth/bloc.dart';
+import '../../auth/interface.dart';
 import '../../questions/bloc.dart';
 import '../../settings/bloc.dart';
 

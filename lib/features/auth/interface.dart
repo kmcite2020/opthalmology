@@ -1,4 +1,12 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
+
 import 'user.dart';
+part 'bloc.dart';
+part 'repository.dart';
 
 abstract class AuthInterface {
   void login({

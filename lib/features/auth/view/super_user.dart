@@ -3,7 +3,7 @@ import 'package:opthalmology/shared/navigator/go_buttons/to_settings.dart';
 import 'package:opthalmology/shared/utils.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../bloc.dart';
+import '../interface.dart';
 import '../user.dart';
 import 'is_auth_status_view.dart';
 

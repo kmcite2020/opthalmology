@@ -3,13 +3,13 @@
 import 'package:colornames/colornames.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:opthalmology/features/auth/bloc.dart';
 import 'package:opthalmology/features/questions/bloc.dart';
 import 'package:opthalmology/features/settings/view/theme_editor.dart';
 import '../../../shared/list_tile.dart';
 import 'package:states_rebuilder/scr/state_management/state_management.dart';
 
 import '../../../shared/utils.dart';
+import '../../auth/interface.dart';
 import '../bloc.dart';
 import 'color_editor.dart';
 import '../../questions/view/delete_all_question_button.dart';

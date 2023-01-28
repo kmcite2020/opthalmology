@@ -1,10 +1,4 @@
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:states_rebuilder/states_rebuilder.dart';
-
-import 'interface.dart';
-import 'user.dart';
+part of 'interface.dart';
 
 final AuthInterface authInterface = AuthRepository();
 

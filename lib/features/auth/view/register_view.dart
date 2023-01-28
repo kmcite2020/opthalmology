@@ -7,7 +7,7 @@ import 'package:opthalmology/features/auth/view/login_view.dart';
 import 'package:opthalmology/shared/navigator/go_buttons/to_settings.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../bloc.dart';
+import '../interface.dart';
 
 class RegisterView extends ReactiveStatelessWidget {
   const RegisterView({super.key});

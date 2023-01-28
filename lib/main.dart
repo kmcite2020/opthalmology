@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:opthalmology/features/auth/bloc.dart';
 import 'package:opthalmology/features/auth/view/login_view.dart';
 import 'package:opthalmology/features/home/view/view.dart';
 import 'package:opthalmology/features/questions/view/questions_manager_view.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
+import 'features/auth/interface.dart';
 import 'features/auth/view/register_view.dart';
 import 'features/settings/bloc.dart';
 import 'firebase_options.dart';

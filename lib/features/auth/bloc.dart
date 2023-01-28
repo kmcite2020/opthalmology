@@ -1,13 +1,4 @@
-// ignore_for_file: unused_import
-
-import 'package:flutter/material.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
-
-import '../../shared/utils.dart';
-
-import 'interface.dart';
-import 'repository.dart';
-import 'user.dart';
+part of 'interface.dart';
 
 class AuthBloc {
   AuthInterface get interface => authInterface;
