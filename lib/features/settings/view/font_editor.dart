@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 import '../../../shared/utils.dart';
-import '../bloc.dart';
+import '../settings_bloc.dart';
 
 class FontEditorButton extends ReactiveStatelessWidget {
   const FontEditorButton({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../bloc.dart';
+import '../settings_bloc.dart';
 
 class RoundedCornersEditor extends ReactiveStatelessWidget {
   const RoundedCornersEditor({

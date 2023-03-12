@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:opthalmology/features/questions/bloc.dart';
 import 'package:opthalmology/features/settings/view/theme_editor.dart';
-import '../../../shared/list_tile.dart';
 import 'package:states_rebuilder/scr/state_management/state_management.dart';
 
 import '../../../shared/utils.dart';
-import '../../auth/interface.dart';
-import '../bloc.dart';
-import 'color_editor.dart';
+import '../../auth/auth_bloc.dart';
+import '../../auth/login_bloc.dart';
+import '../../auth/presentation/view/logout_button_view.dart';
 import '../../questions/view/delete_all_question_button.dart';
+import '../settings_bloc.dart';
+import 'color_editor.dart';
 import 'font_editor.dart';
-import '../../auth/view/logout_button_view.dart';
 import 'padding.dart';
 import 'rounded_corner.dart';
 
@@ -31,13 +31,13 @@ class SettingsPage extends ReactiveStatelessWidget {
       ),
       body: ListView(
         children: [
-          if (auth.isAuthenticated) LogoutButtonView(),
+          if (authBloc.isAuth) LogoutButtonView(),
           ThemeModeEditorView(),
           ColorEditorView(),
-          if (auth.isAuthenticated) PaddingEditorView(),
-          if (auth.isAuthenticated) RoundedCornersEditor(),
-          if (auth.isAuthenticated) FontEditorButton(),
-          if (auth.isAuthenticated) DeleteAllQuestionsButton()
+          if (authBloc.isAuth) PaddingEditorView(),
+          if (authBloc.isAuth) RoundedCornersEditor(),
+          if (authBloc.isAuth) FontEditorButton(),
+          if (authBloc.isAuth) DeleteAllQuestionsButton()
         ],
       ),
     );

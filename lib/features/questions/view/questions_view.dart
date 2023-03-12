@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
+
 import '../../chapters/chapters_enum.dart';
 import '../bloc.dart';
 import '../models/question.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
 
 class AddQuestionWidget extends ReactiveStatelessWidget {
   const AddQuestionWidget({super.key});
@@ -29,6 +30,8 @@ class QuestionsView extends ReactiveStatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(chapter.name),
+        automaticallyImplyLeading: false,
+        actions: const [BackButton()],
       ),
       body: ListView.builder(
         itemCount: questionBloc.numberOfQuestionsByChapter(chapter),

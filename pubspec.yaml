@@ -24,20 +24,19 @@ dependencies:
   hooks_riverpod: 
   riverpod_annotation: 
   go_router:
-  freezed_annotation:
-  json_annotation:
-  firebase_core: ^2.4.1
-  firebase_auth: ^4.2.2
-  cloud_firestore: ^4.3.1
+  json_annotation: ^4.8.0
+  freezed_annotation: ^2.2.0
   states_rebuilder:
+  appwrite: ^8.2.0
+  firebase_messaging: ^14.2.5
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints:
-  build_runner:
+  build_runner: ^2.3.3
   riverpod_generator:
-  freezed:
-  json_serializable:
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
 flutter:
   uses-material-design: true
   assets:

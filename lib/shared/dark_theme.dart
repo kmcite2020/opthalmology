@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../features/settings/bloc.dart';
+import '../features/settings/settings_bloc.dart';
 
 ThemeData get darkTheme => ThemeData(
       cardColor: settingsBloc.color,

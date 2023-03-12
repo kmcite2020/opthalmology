@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 import '../../../shared/utils.dart';
-import '../bloc.dart';
+import '../settings_bloc.dart';
 
 class ThemeModeEditorView extends ReactiveStatelessWidget {
   const ThemeModeEditorView({

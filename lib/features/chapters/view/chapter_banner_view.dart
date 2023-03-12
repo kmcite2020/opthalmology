@@ -3,7 +3,7 @@ import 'package:opthalmology/features/questions/view/questions_manager_view.dart
 import 'package:opthalmology/shared/utils.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../../settings/bloc.dart';
+import '../../settings/settings_bloc.dart';
 
 class ChapterBannerView extends ReactiveStatelessWidget {
   const ChapterBannerView({
@@ -15,8 +15,6 @@ class ChapterBannerView extends ReactiveStatelessWidget {
     return Column(
       children: [
         InkWell(
-          // height: 200,
-          // border: Border.all(),
           onLongPress: () {
             RM.navigate.to(const QestionManagerView());
           },
@@ -27,13 +25,10 @@ class ChapterBannerView extends ReactiveStatelessWidget {
             ],
           ).pad,
         ).pad,
-        Padding(
-          padding: EdgeInsets.all(settingsBloc.padding),
-          child: ListTile(
-            onTap: () {},
-            title: const Text('Select a chapter to test yourself in'),
-          ),
-        ),
+        ListTile(
+          onTap: () {},
+          title: const Text('Select a chapter to test yourself in'),
+        ).pad,
       ],
     );
   }

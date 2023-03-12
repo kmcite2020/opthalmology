@@ -14,4 +14,6 @@ enum Chapter {
   const Chapter(this.name);
   final String name;
   String get numberOfQuestions => questionBloc.numberOfQuestionsByChapter(Chapter.values[index]).toString();
+  int toMap() => index;
+  static Chapter fromMap(int indexX) => Chapter.values[indexX];
 }

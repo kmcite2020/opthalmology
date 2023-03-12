@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:opthalmology/shared/utils.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../../../shared/list_tile.dart';
 import '../../questions/view/questions_view.dart';
-import '../../settings/bloc.dart';
-import '../../test/bloc.dart';
-import '../../test/view/test_screen.dart';
+import '../../quiz/bloc.dart';
+import '../../quiz/view/quiz_view.dart';
+import '../../settings/settings_bloc.dart';
 import '../chapters_enum.dart';
 
 class ChaptersView extends ReactiveStatelessWidget {
@@ -24,15 +24,15 @@ class ChaptersView extends ReactiveStatelessWidget {
               borderRadius: BorderRadius.circular(settingsBloc.border),
               border: Border.all(),
             ),
-            child: ListTilePadded(
+            child: ListTile(
               leading: CircleAvatar(
                 child: Text(
                   eachChapter.numberOfQuestions,
                 ),
               ),
               onTap: () {
-                testBloc.chapter = eachChapter;
-                RM.navigate.to(TestScreen());
+                quizManager.chapter = eachChapter;
+                RM.navigate.to(QuizView());
               },
               title: Text(eachChapter.name, textScaleFactor: 1),
               trailing: IconButton(
@@ -41,7 +41,7 @@ class ChaptersView extends ReactiveStatelessWidget {
                 },
                 icon: const Icon(Icons.show_chart),
               ),
-            ),
+            ).pad,
           ),
       ],
     );

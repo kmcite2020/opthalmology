@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 import 'package:uuid/uuid.dart';
 
-import 'interface.dart';
-import 'models/question.dart';
-
 import '../chapters/chapters_enum.dart';
+import 'models/question.dart';
 import 'repository.dart';
 
 class QuestionBloc {
-  QuestionInterface get interface => questionInterface;
+  QuestionRepository get interface => questionInterface;
   bool get isEmpty => interface.getAllQuestions().isEmpty;
   bool isEmptyByChapter(Chapter chapter) => interface.getQuestionByChapter(chapter).isEmpty;
   int get numberOfQuestions => interface.getAllQuestions().length;
@@ -49,7 +47,7 @@ class QuestionBloc {
           return 'should contain ? mark';
         }
         if (interface.isSameQuestionStatementPresent(v)) {
-          return 'should not be same as saved question';
+          return 'this question already present';
         }
         if (v.length < 10) {
           return 'should contain at least 10 characters';
@@ -106,7 +104,7 @@ class QuestionBloc {
           return 'should not be empty';
         }
         if (!v.endsWith('.')) {
-          return 'should not be empty';
+          return 'please add full stop';
         }
         return null;
       }

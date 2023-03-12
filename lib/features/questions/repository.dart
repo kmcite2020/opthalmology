@@ -1,55 +1,35 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:opthalmology/shared/utils.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 import '../chapters/chapters_enum.dart';
-import 'interface.dart';
 import 'models/question.dart';
 
-final QuestionInterface questionInterface = QuestionRepository();
+final QuestionRepository questionInterface = QuestionRepository();
 
-class QuestionRepository implements QuestionInterface {
+class QuestionRepository {
   final questionsRM = RM.inject<List<Question>>(
     () => [],
-    persist: () => PersistState(
-      key: 'questions2',
-      toJson: (s) => Question.toListJson(s),
-      fromJson: (json) => Question.fromListJson(json),
-    ),
+    // persist: () => PersistState(
+    //   key: 'questions2',
+    //   toJson: (s) => jsonEncode(s.map((e) => e.toJson()).toList()),
+    //   fromJson: (json) => (jsonDecode(json) as List).map((e) => Question.fromJson(e)).toList(),
+    // ),
   );
-  @override
   List<Question> getAllQuestions() => questionsRM.state;
-
-  @override
   List<Question> getQuestionsByAmount(int amount) => questionsRM.state.take(amount).toList();
+  List<Question> getQuestionByChapter(Chapter chapter) => questionsRM.state.where((question) => question.chapter == chapter).toList();
+  Question getQuestionByChapterAndIndex(Chapter chapter, int index) => getQuestionByChapter(chapter)[index];
 
-  @override
-  List<Question> getQuestionByChapter(Chapter chapter) {
-    return questionsRM.state.where((question) => question.chapter == chapter).toList();
-  }
+  void addQuestion(Question question) => questionsRM.state = [...questionsRM.state, question];
 
-  @override
-  void addQuestion(Question question) {
-    questionsRM.state = [...questionsRM.state, question];
-  }
-
-  @override
-  void deleteAllQuestion() {
-    snackBar('All Questions Deleted');
-    questionsRM.state = [];
-  }
-
-  @override
-  void deleteQuestion(Question question) {
-    questionsRM.state = [
-      for (final eachQuestion in questionsRM.state)
-        if (eachQuestion != question) eachQuestion
-    ];
-  }
-
-  @override
+  void deleteAllQuestion() => questionsRM.state = [];
+  void deleteQuestion(Question question) => questionsRM.state = [
+        for (final eachQuestion in questionsRM.state)
+          if (eachQuestion != question) eachQuestion
+      ];
   bool isSameQuestionStatementPresent(String questionStatement) {
+    // validatorFunction
     for (final Question question in questionsRM.state) {
       if (question.questionName == questionStatement) {
         return true;

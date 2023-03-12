@@ -1,17 +1,16 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/material.dart';
+import 'package:opthalmology/features/auth/presentation/view/super_user.dart';
 import 'package:opthalmology/features/questions/view/questions_view.dart';
 import 'package:opthalmology/shared/navigator/go_buttons/to_login.dart';
 import 'package:opthalmology/shared/navigator/go_buttons/to_register.dart';
-import 'package:opthalmology/shared/utils.dart';
-
-import '../../../shared/navigator/go_buttons/to_settings.dart';
-import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../../auth/interface.dart';
-import '../../chapters/view/view.dart';
+import '../../../shared/navigator/go_buttons/to_settings.dart';
+import '../../auth/auth_bloc.dart';
 import '../../chapters/view/chapter_banner_view.dart';
+import '../../chapters/view/view.dart';
 import 'greetings_view.dart';
 
 class HomeView extends ReactiveStatelessWidget {
@@ -27,17 +26,24 @@ class HomeView extends ReactiveStatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           GotoSettingsPageButton(),
-          if (!auth.isAuthenticated) GotoLoginViewButton(),
-          if (!auth.isAuthenticated) GotoRegisterViewButton(),
-          if (auth.isAuthenticated) AddQuestionWidget()
+          if (!authBloc.isAuth) GotoLoginViewButton(),
+          if (!authBloc.isAuth) GotoRegisterViewButton(),
+          if (authBloc.isAuth) AddQuestionWidget()
         ],
       ),
-      body: auth.isAuthenticated
+      body: authBloc.isAuth
           ? ListView(
-              children: [GreetingsView(), ChapterBannerView(), ChaptersView()] // auth
-              ,
+              children: [
+                GreetingsView(),
+                ChapterBannerView(),
+                ChaptersView(),
+              ],
             )
-          : Center(child: Text("you are not signed in", textScaleFactor: 2).pad),
+          : Column(
+              children: [
+                SuperUserListView(),
+              ],
+            ),
     );
   }
 }

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../../../features/auth/view/login_view.dart';
+import '../../../features/auth/presentation/view/login_view.dart';
 import '../../utils.dart';
 
 class GotoLoginViewButton extends ReactiveStatelessWidget {
