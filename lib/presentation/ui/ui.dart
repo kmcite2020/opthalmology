@@ -1,20 +1,20 @@
 import 'package:colornames/colornames.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:isar/isar.dart';
-import 'package:project_opthalmology/blocs/blocs.dart';
-import 'package:project_opthalmology/repositories/repositories.dart';
-import 'package:project_opthalmology/services/services.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:project_opthalmology/domain/repositories/repositories.dart';
+import 'package:states_rebuilder/states_rebuilder.dart';
 
-import '../models/models.dart';
+import '../../domain/models/models.dart';
+import '../blocs/blocs.dart';
+import '../blocs/configuration_bloc.dart';
+import '../themes_provider.dart';
+import 'home_page/home_page_action_widget.dart';
+import 'quizzes/quizzes_page.dart';
 
 part 'app.dart';
 part 'configuration_page.dart';
-part 'go_router.dart';
-part 'home_page.dart';
+part 'navigator.dart';
+part 'home_page/home_page.dart';
 part 'questions_page.dart';
 part 'quizzes/quiz.dart';
 part 'ui.g.dart';

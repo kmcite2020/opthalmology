@@ -8,30 +8,23 @@ environment:
 
 dependencies:
   colornames: ^0.1.0
-  copy_with_extension: ^5.0.4
   cupertino_icons: ^1.0.6
   flex_color_scheme: ^7.3.1
-  flex_seed_scheme: ^1.4.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.3
-  flutter_riverpod: ^2.4.4
-  go_router: ^11.1.4
-  isar: 4.0.0-dev.14
-  isar_flutter_libs: 4.0.0-dev.14
+  hive_flutter: ^1.1.0
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
   path_provider: ^2.1.1
-  riverpod_annotation: ^2.2.1
+  shared_preferences: ^2.2.2
+  states_rebuilder: ^6.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-  copy_with_extension_gen: ^5.0.4
   build_runner: ^2.4.6
-  riverpod_generator: ^3.0.0-dev.3
-  custom_lint: ^0.5.3
-  riverpod_lint: ^2.3.1
   flutter_launcher_icons: ^0.13.1
+  isar_generator: ^3.1.0+1
 
 flutter:
   uses-material-design: true

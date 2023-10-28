@@ -1,14 +1,12 @@
 part of 'ui.dart';
 
-class ConfigurationPage extends ConsumerWidget {
+class ConfigurationPage extends ReactiveStatelessWidget {
   static String path = 'configuration';
 
   const ConfigurationPage({super.key});
 
   @override
-  Widget build(BuildContext context, ref) {
-    final configuration = ref.watch(watchConfigurationProvider).value;
-    if (configuration == null) return const CircularProgressIndicator().center();
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: 'Configuration'.text(),
@@ -16,7 +14,7 @@ class ConfigurationPage extends ConsumerWidget {
       body: Column(
         children: [
           DropdownButtonFormField(
-            value: configuration.themeMode,
+            value: configurationBloc.configuration.themeMode,
             items: ThemeMode.values
                 .map(
                   (e) => DropdownMenuItem(
@@ -26,11 +24,11 @@ class ConfigurationPage extends ConsumerWidget {
                 )
                 .toList(),
             onChanged: (themeMode) {
-              ref.read(configurationBlocProvider.notifier).setThemeMode(themeMode!);
+              configurationBloc.setThemeMode(themeMode!);
             },
           ).pad(),
           DropdownButtonFormField(
-            value: configuration.materialColor,
+            value: configurationBloc.configuration.materialColor,
             items: Colors.primaries
                 .map(
                   (e) => DropdownMenuItem(
@@ -40,21 +38,9 @@ class ConfigurationPage extends ConsumerWidget {
                 )
                 .toList(),
             onChanged: (materialColor) {
-              ref
-                  .read(configurationBlocProvider.notifier)
-                  .setMaterialColor(materialColor!);
+              configurationBloc.setMaterialColor(materialColor!);
             },
           ).pad(),
-          SwitchListTile(
-            value: configuration.isTrueColors,
-            onChanged: ref.read(configurationBlocProvider.notifier).setTrueColors,
-            title: 'True Colors'.text(),
-          ),
-          SwitchListTile(
-            value: configuration.isMaterial3,
-            onChanged: ref.read(configurationBlocProvider.notifier).setMaterial3,
-            title: 'Use Material 3'.text(),
-          ),
         ],
       ),
     );
