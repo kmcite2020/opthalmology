@@ -8,16 +8,6 @@ class HomePage extends ReactiveStatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: 'Home'.text(),
-        actions: [
-          IconButton.filled(
-            onPressed: () {
-              navigator.to(Routes.configurations);
-            },
-            icon: const Icon(
-              Icons.settings,
-            ),
-          )
-        ],
       ),
       body: GridView.count(
         crossAxisCount: 2,
@@ -38,13 +28,11 @@ class HomePage extends ReactiveStatelessWidget {
           ),
           HomePageActionWidget(
             icon: Icons.settings,
-            onPressed: () {
-              navigator.to(Routes.configurations);
-            },
+            onPressed: () => navigator.to(Routes.configurations),
             label: 'Configurations',
           ),
         ],
-      ),
+      ).pad(),
     );
   }
 }

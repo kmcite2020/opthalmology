@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of '../ui.dart';
 
 @Collection()
@@ -21,8 +22,11 @@ class Quiz {
   @ignore
   List<Question>? questions;
 
-  static Quiz? fromID(quizID) {
-    return isar.quizs.getSync(quizID);
+  static Quiz? fromID(quizID) => isar.quizs.getSync(quizID);
+
+  @override
+  String toString() {
+    return 'Quiz(id: $id, title: $title, author: $author, duration: $duration, difficultyLevel: $difficultyLevel, chapter: $chapter, instructions: $instructions, metadata: $metadata, userScores: $userScores, randomizeQuestions: $randomizeQuestions, isPublic: $isPublic, accessCode: $accessCode, dateCreated: $dateCreated, lastModified: $lastModified, questions: $questions)';
   }
 }
 
@@ -31,4 +35,7 @@ class UserScore {
   String? username;
   int? score;
   DateTime? timestamp;
+
+  @override
+  String toString() => 'UserScore(username: $username, score: $score, timestamp: $timestamp)';
 }
