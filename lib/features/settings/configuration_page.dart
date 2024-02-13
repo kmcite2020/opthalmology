@@ -1,14 +1,9 @@
-import 'package:colornames/colornames.dart';
-import 'package:flutter/material.dart';
-import 'package:opthalmology/features/core/extensions.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
+import '../../main.dart';
 
-import 'settings.dart';
-
-class ConfigurationPage extends ReactiveStatelessWidget {
+class SettingsPage extends UI {
   static String path = 'configuration';
 
-  const ConfigurationPage({super.key});
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

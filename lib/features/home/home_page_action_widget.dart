@@ -1,9 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import '../../main.dart';
 
-import 'package:flutter/material.dart';
-import '../core/extensions.dart';
-
-class HomePageActionWidget extends StatelessWidget {
+class HomePageActionWidget extends UI {
   const HomePageActionWidget({
     Key? key,
     this.label = 'Action',

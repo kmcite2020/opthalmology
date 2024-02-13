@@ -1,12 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:opthalmology/features/core/extensions.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
+import 'package:opthalmology/features/quizzes/quizzes_bloc.dart';
 
-import '../../../features/quizzes/quizzes_bloc.dart';
-import '../questions/question.dart';
-import 'quiz.dart';
+import '../../main.dart';
 
-class QuizzesPage extends ReactiveStatelessWidget {
+class QuizzesPage extends UI {
   const QuizzesPage({super.key});
 
   @override

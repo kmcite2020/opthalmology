@@ -1,25 +1,31 @@
-import 'package:hive/hive.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
-
-import 'directory.dart';
+import '../../main.dart';
 
 class HiveStorage implements IPersistStore {
-  late Box _box;
+  late Box box;
 
   @override
-  Future<void> init() async =>
-      _box = Hive.box(name: 'opthalmology', directory: directory.path);
+  Future<void> init() async {
+    await Hive.initFlutter();
+    box = await Hive.openBox('opthalmology');
+  }
 
   @override
-  Object? read(String key) => _box.get(key);
+  Object? read(String key) {
+    return box.get(key);
+  }
 
   @override
-  Future<void> write<T>(String key, T value) async =>
-      _box.put(key, value as String);
+  Future<void> write<T>(String key, T value) async {
+    await box.put(key, value);
+  }
 
   @override
-  Future<void> delete(String key) async => await _box.delete(key);
+  Future<void> delete(String key) async {
+    await box.delete(key);
+  }
 
   @override
-  Future<void> deleteAll() async => _box.clear();
+  Future<void> deleteAll() async {
+    await box.clear();
+  }
 }

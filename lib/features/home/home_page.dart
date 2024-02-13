@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart';
-import '../core/extensions.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
+import '../../main.dart';
 
-import '../core/navigator.dart';
-import 'home_page_action_widget.dart';
-
-class HomePage extends ReactiveStatelessWidget {
+class HomePage extends UI {
   const HomePage({super.key});
 
   @override

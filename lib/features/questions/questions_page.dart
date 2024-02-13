@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:opthalmology/features/core/extensions.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
+import '../../main.dart';
 
-import 'question.dart';
-import 'questions_bloc.dart';
-
-class QuestionsPage extends ReactiveStatelessWidget {
+class QuestionsPage extends UI {
   static const path = 'questions';
   const QuestionsPage({super.key});
 
@@ -22,11 +17,7 @@ class QuestionsPage extends ReactiveStatelessWidget {
       body: const QuestionsList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          questionsManager.addQuestion(
-            Question(
-              id: questionsManager.questionsState.questions.length,
-            ),
-          );
+          questionsManager.addQuestion(Question());
         },
         child: const Icon(Icons.add),
       ),
@@ -41,9 +32,9 @@ class QuestionsList extends ReactiveStatelessWidget {
   Widget build(BuildContext context) {
     final QuestionsState questionsState = questionsManager.questionsState;
     return ListView.builder(
-      itemCount: questionsState.questions.length,
+      itemCount: questionsState.cache.length,
       itemBuilder: (context, index) {
-        final question = questionsState.questions[index];
+        final question = questionsState.cache.values.toList()[index];
         Widget _question(Question question) {
           return Card(
             child: ListTile(
@@ -58,7 +49,7 @@ class QuestionsList extends ReactiveStatelessWidget {
               switch (questionsState.questionsStatus) {
                 QuestionsStatus.loading =>
                   const CircularProgressIndicator().pad(),
-                QuestionsStatus.resting => const CircleAvatar().pad(),
+                QuestionsStatus.success => const CircleAvatar().pad(),
                 QuestionsStatus.error => ErrorWidget('exception').pad(),
               },
               _question(question)
@@ -77,7 +68,7 @@ class QuestionsAmountCard extends ReactiveStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: questionsManager.questionsState.questions.length.text().pad(),
+      child: questionsManager.questionsState.cache.length.text().pad(),
     );
   }
 }

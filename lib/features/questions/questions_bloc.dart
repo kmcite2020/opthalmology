@@ -1,15 +1,10 @@
-import 'package:states_rebuilder/states_rebuilder.dart';
-
-import 'question.dart';
-import 'questions_repository.dart';
+import '../../main.dart';
 
 final QuestionsManager questionsManager = QuestionsManager();
 
 class QuestionsManager {
-  late final questionsStateRM = RM.injectStream(
-    () => questionsRepository.watchQuestions().map(
-          (questions) => questionsState.copyWith(questions: questions),
-        ),
+  final questionsStateRM = RM.inject(
+    () => QuestionsState(),
   );
 
   bool get waiting => questionsStateRM.isWaiting;
@@ -19,10 +14,16 @@ class QuestionsManager {
 
   void setStatus(QuestionsStatus status) =>
       questionsState = questionsState.copyWith(questionsStatus: status);
-  void setQuestions(List<Question> questions) =>
-      questionsState = questionsState.copyWith(questions: questions);
 
   void addQuestion(Question question) {
-    questionsRepository.setQuestion(question);
+    questionsState = questionsState.copyWith(
+      cache: Map.of(questionsState.cache)..[question.questionID] = question,
+    );
+  }
+
+  void removeQuestion(Question question) {
+    questionsState = questionsState.copyWith(
+      cache: Map.of(questionsState.cache)..remove(question.questionID),
+    );
   }
 }

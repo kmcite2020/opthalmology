@@ -1,11 +1,8 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/material.dart';
+import '../../main.dart';
 
-import 'settings.dart';
+final themes = Themes();
 
-final themesProvider = ThemesProvider();
-
-class ThemesProvider {
+class Themes {
   ThemeData theme() => FlexThemeData.light(
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: settingsManager.settings.materialColor,

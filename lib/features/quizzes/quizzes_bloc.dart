@@ -1,23 +1,20 @@
-import 'package:states_rebuilder/states_rebuilder.dart';
-
-import 'quiz.dart';
-import 'quizzes_repository.dart';
+import '../../main.dart';
 
 final QuizzesBloc quizzesBloc = QuizzesBloc();
 
 class QuizzesBloc {
-  final quizzesRM = RM.injectStream(
-    quizzesRepository.watchQuizzes,
+  final quizzesRM = RM.inject(
+    () => <Quiz>[],
     initialState: <Quiz>[],
   );
   List<Quiz> get quizzes => quizzesRM.state;
 
   void addQuiz(Quiz quiz) {
-    quizzesRepository.addQuiz(quiz);
+    // quizzesRepository.addQuiz(quiz);
   }
 
   void removeQuiz(Quiz quiz) {
-    quizzesRepository.removeQuiz(quiz);
+    // quizzesRepository.removeQuiz(quiz);
   }
 
   final quizCreateRM = RM.inject(

@@ -1,25 +1,22 @@
 import 'dart:convert';
 
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 part 'settings.g.dart';
+part 'settings.freezed.dart';
 
-@JsonSerializable()
-@CopyWith()
-class Settings {
-  @MaterialColorConverter()
-  final MaterialColor materialColor;
-  final ThemeMode themeMode;
-  const Settings({
-    this.materialColor = Colors.amber,
-    this.themeMode = ThemeMode.system,
-  });
+@freezed
+class Settings with _$Settings {
+  const factory Settings({
+    @MaterialColorConverter()
+    @Default(Colors.blue)
+    final MaterialColor materialColor,
+    @Default(ThemeMode.system) final ThemeMode themeMode,
+  }) = _Settings;
 
-  Map<String, dynamic> toJson() => _$SettingsToJson(this);
-  static Settings fromJson(Map<String, dynamic> json) =>
+  factory Settings.fromJson(Map<String, dynamic> json) =>
       _$SettingsFromJson(json);
 }
 

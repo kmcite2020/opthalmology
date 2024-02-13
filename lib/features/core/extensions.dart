@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import '../../main.dart';
+
+String get randomID => Uuid().v4();
 
 extension ObjectExtensions on Object? {
   Widget text({

@@ -1,19 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:states_rebuilder/states_rebuilder.dart';
+import '../main.dart';
 
-import 'settings/themes_provider.dart';
-import 'core/navigator.dart';
-
-class App extends ReactiveStatelessWidget {
+class App extends UI {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: themesProvider.theme(),
-      darkTheme: themesProvider.darkTheme(),
-      themeMode: themesProvider.themeMode(),
+      theme: themes.theme(),
+      darkTheme: themes.darkTheme(),
+      themeMode: themes.themeMode(),
       routerDelegate: navigator.routerDelegate,
       routeInformationParser: navigator.routeInformationParser,
     );

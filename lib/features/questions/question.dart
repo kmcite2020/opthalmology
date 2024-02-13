@@ -1,46 +1,31 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:isar/isar.dart';
-import 'package:json_annotation/json_annotation.dart';
+import '../../main.dart';
 
 part 'question.g.dart';
+part 'question.freezed.dart';
 
-@Embedded()
-@Collection()
-@CopyWith()
-@JsonSerializable()
-class Question {
-  @Id()
-  final int id;
-  final String? title;
-  final String? a;
-  final String? b;
-  final String? c;
-  final String? d;
-  const Question({
-    required this.id,
-    this.title,
-    this.a,
-    this.b,
-    this.c,
-    this.d,
-  });
+@freezed
+class Question with _$Question {
+  const factory Question.raw({
+    @Default('') final String questionID,
+    @Default('') final String title,
+    @Default('') final String a,
+    @Default('') final String b,
+    @Default('') final String c,
+    @Default('') final String d,
+  }) = _Question;
 
   factory Question.fromJson(json) => _$QuestionFromJson(json);
-  toJson() => _$QuestionToJson(this);
+  factory Question() => Question.raw(questionID: randomID);
 }
 
-@JsonSerializable()
-@CopyWith()
-class QuestionsState {
-  final List<Question> questions;
-  final QuestionsStatus questionsStatus;
-  QuestionsState({
-    this.questions = const [],
-    this.questionsStatus = QuestionsStatus.resting,
-  });
+@freezed
+class QuestionsState with _$QuestionsState {
+  const factory QuestionsState({
+    @Default(<String, Question>{}) final Map<String, Question> cache,
+    @Default(QuestionsStatus.success) final QuestionsStatus questionsStatus,
+  }) = _QuestionsState;
+
   factory QuestionsState.fromJson(json) => _$QuestionsStateFromJson(json);
-  toJson() => _$QuestionsStateToJson(this);
 }
 
-enum QuestionsStatus { loading, resting, error }
+enum QuestionsStatus { loading, success, error }

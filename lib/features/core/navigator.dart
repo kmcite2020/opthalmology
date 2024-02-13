@@ -1,9 +1,4 @@
-import 'package:states_rebuilder/states_rebuilder.dart';
-
-import '../home/home_page.dart';
-import '../quizzes/quizzes_page.dart';
-import '../settings/configuration_page.dart';
-import '../questions/questions_page.dart';
+import '../../main.dart';
 
 final navigator = RM.injectNavigator(
   initialLocation: Routes.home,
@@ -11,7 +6,7 @@ final navigator = RM.injectNavigator(
     Routes.home: (data) => const HomePage(),
     Routes.questions: (data) => const QuestionsPage(),
     Routes.question: (data) => const QuestionsPage(),
-    Routes.configurations: (data) => const ConfigurationPage(),
+    Routes.configurations: (data) => const SettingsPage(),
     Routes.quizzes: (data) => QuizzesPage(),
     Routes.takeQuiz: (data) => TakeQuizPage(),
   },
